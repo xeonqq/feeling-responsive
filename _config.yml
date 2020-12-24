@@ -21,11 +21,11 @@ credits: '<p>Created with &hearts; by <a href="http://phlow.de/">Phlow</a> with 
 
 # Main author of the website
 # See > authors.yml
-author: phlow
+author: xeonqq
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
-url: 'https://phlow.github.io'
+url: 'https://xeonqq.github.io'
 baseurl: '/feeling-responsive'
 
 # This is for the editing function in _/includes/improve_content
@@ -38,7 +38,7 @@ improve_content: https://github.com/Phlow/feeling-responsive/edit/gh-pages
 # Example: <img src="{{ site.urlimg }}{{ post.image.title }}" />
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
-urlimg: 'https://phlow.github.io/feeling-responsive/images/'
+urlimg: 'https://xeonqq.github.io/feeling-responsive/images/'
 
 
 # Logo size is 600x80 pixels
@@ -112,7 +112,7 @@ defaults:
       show_meta: false 	# Hide metadata for all pages
       # sidebar:    		# Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: phlow     # Default author for pages
+      author: xeonqq     # Default author for pages
   -
     scope:
       path: ''
@@ -121,7 +121,7 @@ defaults:
       show_meta: true   # Show metadata for all posts
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: phlow     # Default author for posts
+      author: xeonqq     # Default author for posts
 
 
 
