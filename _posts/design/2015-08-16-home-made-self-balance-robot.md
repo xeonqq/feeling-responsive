@@ -19,6 +19,7 @@ tags:
 header: no
 image:
     title: robot-title.jpg
+    thumb: robot-thumb.jpg
     homepage: robot-title.jpg
 ---
 
