@@ -13,6 +13,7 @@ tags:
   - arduino
   - pid
   - kalman filter
+comments: true
 #
 # Styling
 #
