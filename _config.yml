@@ -232,7 +232,9 @@ sass:
 
 google_analytics_tracking_id: 'UA-69395474-1'
 
-
+google-ads :
+          ad-client : ca-pub-8693441428067295
+          ad-slot : 3183219369
 
 #   _                 _     _
 #  | |_ __ ___      _| | __| |_ ___
