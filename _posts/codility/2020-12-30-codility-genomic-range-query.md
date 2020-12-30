@@ -52,7 +52,7 @@ def solution(S, P, Q):
 
 {% if true %}
 <div class="ads">
-{% include advertising.html %}
+{% include advertising_wide.html %}
 </div><!-- /.ads -->
 {% endif %}
 
