@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Codility GenomicRangeQuery Solution Explained with Illustration"
+title: "Codility GenomicRangeQuery Solution (Python) Explained with Illustration"
 subheadline: "Codility"
 teaser: "How to solve GenomicRangeQuery problem with prefix sum?"
 header: no
@@ -13,7 +13,7 @@ categories:
     - python
 ---
 
-### GenomicRangeQuery Solution Explained with Illustration
+### GenomicRangeQuery Solution (Python) Explained with Illustration
 The prefix sum is a powerful concept to store the history statistics of an array by iterating the array once, so that later you can query the statistics of certain intervals of the array efficiently 
 without iterating for each interval again.
 
