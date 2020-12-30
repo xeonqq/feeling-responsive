@@ -5,9 +5,9 @@ subheadline: "Codility"
 teaser: "How to solve GenomicRangeQuery problem with prefix sum"
 header: no
 image:
-    title: geno1.png
-    homepage: geno1.png
-    thumb: geno1.png
+    title: geno1.jpg
+    homepage: geno1.jpg
+    thumb: geno1.jpg
 comments: true
 categories:
     - codility
@@ -62,7 +62,7 @@ For example, if the interval is **[2,4]**, then the selected geno is **GCC** and
 
 Unlike other prefix sum exercise, you can not sum up the charactors, and that has no meaning. Neither does it help to sum up over the factors, if we replace the geno with their factor respectively.
 
-The trick is to sum up the number of occurance of each geno from left to right. So in the prefix sum array we do not store one value for each element but we store 4 values. In the end, we have an array of array.
+The trick is to sum up the number of occurance of each geno from left to right. So in the prefix sum array we do not store one value for each element but we store 4 values. In the end, we have an array of arrays.
 Each value in the 4-element array corresponds to the number of a geno seen so far, **A** occupy 0 position in the 4-element array, **C** occupy 1 position, so on so forth. 
 
 Note the prefix sum array has one more element than the original geno sequence, that is to store the **[0,0,0,0]** for easy substraction later.
