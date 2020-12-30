@@ -6,6 +6,7 @@ teaser: "How to solve GenomicRangeQuery problem with prefix sum?"
 header: no
 image:
     thumb: geno1.jpg
+    homepage: geno1.jpg
 comments: true
 categories:
     - codility
