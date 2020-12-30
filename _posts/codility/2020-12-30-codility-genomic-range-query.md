@@ -2,11 +2,9 @@
 layout: page
 title: "Codility GenomicRangeQuery Solution Explained with Illustration"
 subheadline: "Codility"
-teaser: "How to solve GenomicRangeQuery problem with prefix sum"
+teaser: "How to solve GenomicRangeQuery problem with prefix sum?"
 header: no
 image:
-    title: geno1.jpg
-    homepage: geno1.jpg
     thumb: geno1.jpg
 comments: true
 categories:
@@ -50,6 +48,14 @@ def solution(S, P, Q):
         result.append(factor)
     return result
 ```
+
+
+{% if true %}
+<div class="ads">
+{% include advertising.html %}
+</div><!-- /.ads -->
+{% endif %}
+
 
 ### Explaination
 
