@@ -11,7 +11,6 @@ image:
 comments: true
 categories:
     - codility
-    - coding
     - python
 ---
 
@@ -54,12 +53,12 @@ def solution(S, P, Q):
 
 ### Explaination
 
-![geno1](geno1.jpg)
+<img src="{{ site.urlimg }}geno1.jpg" alt="">
 
 So let's use the example case from Codility, **[CAGCCTA]** is our genomic sequence, with the factor **{"A": 1, "C":2, "G":3, "T": 4}**. The goal is to find the minimum factor for a given intervel.
 For example, if the interval is **[2,4]**, then the selected geno is **GCC** and the one with lowest factor is **C**, so the solution should return **2**.
 
-![geno3](geno3.jpg)
+<img src="{{ site.urlimg }}geno3.jpg" alt="">
 
 Unlike other prefix sum exercise, you can not sum up the charactors, and that has no meaning. Neither does it help to sum up over the factors, if we replace the geno with their factor respectively.
 
@@ -68,7 +67,7 @@ Each value in the 4-element array corresponds to the number of a geno seen so fa
 
 Note the prefix sum array has one more element than the original geno sequence, that is to store the **[0,0,0,0]** for easy substraction later.
 
-![geno4](geno4.jpg)
+<img src="{{ site.urlimg }}geno4.jpg" alt="">
 
 Given the prefix sum array containing the occurance count of each geno, it is now easy to calculate the minimum factor given an interval. For intervel **[2,4]**, we take prefix_sum[4] - prefix_sum[2-1], 
 and we can get the occurance count of the geno during this interval, **[0,2,1,0]**. **C** is one with the lowest factor **2** occuring in the interval. 
