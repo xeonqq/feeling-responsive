@@ -76,7 +76,7 @@ Note the prefix sum array has one more element than the original geno sequence, 
 
 <img src="{{ site.urlimg }}geno4.jpg" alt="">
 
-Given the prefix sum array containing the occurance count of each geno, it is now easy to calculate the minimum factor given an interval. For intervel **[2,4]**, we take prefix_sum[4] - prefix_sum[2-1], 
+Given the prefix sum array containing the occurance count of each geno, it is now easy to calculate the minimum factor given an interval. For intervel **[2,4]**, we take prefix_sum[4+1] - prefix_sum[2], 
 and we can get the occurance count of the geno during this interval, **[0,2,1,0]**. **C** is one with the lowest factor **2** occuring in the interval. 
 
 [1]: https://app.codility.com/demo/results/trainingW78QEJ-3VA/
