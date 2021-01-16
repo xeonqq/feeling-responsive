@@ -23,15 +23,18 @@ Let's look at the following examples using this [online hand-written digit recog
 
 First we draw a normal 2, it has been recognized correctly:
 
-<img src="{{ site.urlimg }}normal_2.gif" alt="">
+<img src="{{ site.urlimg }}normal_2.gif" style="height:80%" alt="">
 
 Second we draw a rotated 2, it's recognized as 8:
 
-<img src="{{ site.urlimg }}rotated_2.gif" alt="">
+<img src="{{ site.urlimg }}rotated_2.gif" style="height:80%" alt="">
 
-Because the network is not trained with such rotated inputs, therefore the network fails to recognize in this case. We call this is not spatial invariant. 
+One might say, because the network is not trained with such rotated inputs, therefore the network fails to recognize in this case. 
+To verify it, I build a [simple network][4] with two fully connected layer same as the [google tutorial][3]. Then I trained this network with both original MNIST dataset and affine distorted MNIST dataset mixed together. 
+The accuracy when evaluating the original MNIST is still good, with accuracy of 0.9767. However, when evaluating with distorted MNIST, the accuracy has only 0.7569. 
+In this case, we can say this network is not spatial invariant, because it fails to classify the images when they are affine transformed (scale, rotate, translation, etc).
 
-In this post, we will implement the STN concept using keras from tensorflow 2. We will cover many important details during implementation. 
+In this post, we will see how Spatial Transformer Networks can allievate this problem, and how to implement the STN concept using keras from tensorflow 2. We will also cover many important details during implementation. 
 
 *The full code for this project is available on GitHub:*
 [https://github.com/xeonqq/spatial_transformer_network][1]
@@ -40,4 +43,5 @@ In this post, we will implement the STN concept using keras from tensorflow 2. W
 
 [1]: https://github.com/xeonqq/spatial_transformer_network
 [2]: https://www.cs.ryerson.ca/~aharley/vis/conv/
-
+[3]: https://www.tensorflow.org/tutorials/quickstart/beginner
+[4]: https://github.com/xeonqq/spatial_transformer_network/blob/master/mnist_baseline.py
