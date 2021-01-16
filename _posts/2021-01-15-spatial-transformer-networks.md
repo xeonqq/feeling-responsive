@@ -13,6 +13,23 @@ comments: true
 categories:
     - machine learning
 ---
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.img-container {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
 
 ### Intro
 [Spatial Transformer Networks](https://arxiv.org/abs/1506.02025) is a paper published by *Max Jaderberg, Karen Simonyan, Andrew Zisserman* and *Koray Kavukcuoglu* at 2015, at the moment of writing, it has been cited 3715 times. 
@@ -21,13 +38,17 @@ The network works like a plug and play enhancement NN module to your exisiting n
 Why spatial invariant is important and what does that mean?
 Let's look at the following examples using this [online hand-written digit recognition tool][2] trained with MNIST dataset. 
 
-First we draw a normal 2, it has been recognized correctly:
+First we draw a normal 2, it has been recognized correctly, second we draw a rotated 2, it's recognized as 8:
 
-<img src="{{ site.urlimg }}normal_2.gif" style="height:80%" alt="">
+<div class="clearfix">
+  <div class="img-container">
+  <img src="{{ site.urlimg }}normal_2.gif" alt="normal" style="width:100%">
+  </div>
+  <div class="img-container">
+  <img src="{{ site.urlimg }}rotated_2.gif" alt="rotated" style="width:100%">
+  </div>
+</div>
 
-Second we draw a rotated 2, it's recognized as 8:
-
-<img src="{{ site.urlimg }}rotated_2.gif" style="height:80%" alt="">
 
 One might say, because the network is not trained with such rotated inputs, therefore the network fails to recognize in this case. 
 To verify it, I build a [simple network][4] with two fully connected layer same as the [google tutorial][3]. Then I trained this network with both original MNIST dataset and affine distorted MNIST dataset mixed together. 
