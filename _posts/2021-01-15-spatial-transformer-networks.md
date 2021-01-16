@@ -4,6 +4,7 @@ title: "Hands-on: implement a spatial transformer network by yourself"
 subheadline: "Machine Learning"
 teaser: "Spatial transformer networks understand how to rotate, translate a image. How does it learn to do it?"
 header: no
+sidebar: right
 image:
     title: stn.png
     thumb:  stn.png
