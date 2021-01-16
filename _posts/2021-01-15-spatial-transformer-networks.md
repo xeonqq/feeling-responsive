@@ -35,7 +35,12 @@ categories:
 [Spatial Transformer Networks](https://arxiv.org/abs/1506.02025) is a paper published by *Max Jaderberg, Karen Simonyan, Andrew Zisserman* and *Koray Kavukcuoglu* at 2015, at the moment of writing, it has been cited 3715 times. 
 The network works like a plug and play enhancement NN module to your exisiting neural network. It can perform affine transformation to the input image in order to ensure the inputs to the classification network to be spatial invariant.
 
-Why spatial invariant is important and what does that mean?
+The figure below shows how a STN can transform an affine distorted MNIST dataset into a "corrected" one:
+[![stn in action][6]][6]
+
+
+##### Why spatial invariant is important and what does that mean?
+
 Let's look at the following examples using this [online hand-written digit recognition tool][2] trained with MNIST dataset. 
 
 First we draw a normal 2, it has been recognized correctly, second we draw a rotated 2, it's recognized as 8:
@@ -50,10 +55,15 @@ First we draw a normal 2, it has been recognized correctly, second we draw a rot
 </div>
 
 
-One might say, because the network is not trained with such rotated inputs, therefore the network fails to recognize in this case. 
+##### One might say, because the network is not trained with such rotated inputs, therefore the network fails to recognize in this case. 
+
 To verify it, I build a [simple network][4] with two fully connected layer same as the [google tutorial][3]. Then I trained this network with both original MNIST dataset and affine distorted MNIST dataset mixed together. 
 The accuracy when evaluating the original MNIST is still good, with accuracy of 0.9767. However, when evaluating with distorted MNIST, the accuracy has only 0.7569. 
-In this case, we can say this network is not spatial invariant, because it fails to classify the images when they are affine transformed (scale, rotate, translation, etc).
+In this case, we can say this fully connected layer based model architecture is not spatial invariant, because it fails to classify the images when they are affine transformed (scale, rotate, translation, etc).
+
+##### Well, how about CNN with max-pooling layers. Because I hear from [here][5] that max-pooling layers help to remove spatial variance.
+
+Talking is cheap, let also experiment a CNN with distorted MNIST dataset.
 
 In this post, we will see how Spatial Transformer Networks can allievate this problem, and how to implement the STN concept using keras from tensorflow 2. We will also cover many important details during implementation. 
 
@@ -66,3 +76,5 @@ In this post, we will see how Spatial Transformer Networks can allievate this pr
 [2]: https://www.cs.ryerson.ca/~aharley/vis/conv/
 [3]: https://www.tensorflow.org/tutorials/quickstart/beginner
 [4]: https://github.com/xeonqq/spatial_transformer_network/blob/master/mnist_baseline.py
+[5]: https://datascience.stackexchange.com/questions/35836/does-pooling-remove-spatial-information-of-image-in-cnn
+[6]: https://github.com/xeonqq/spatial_transformer_network/blob/master/pics/distorted_and_undistorted_mnist.png?raw=true
