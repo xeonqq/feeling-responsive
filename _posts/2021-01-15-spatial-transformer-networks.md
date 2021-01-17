@@ -80,12 +80,13 @@ model = tf.keras.models.Sequential([
 After training with the same dataset as before, we have an accuracy of **0.88** for the distorted MNIST dataset! That's already a lot of improvement. Therefore, it is right indeed that max-pooling layer helps to remove the spatial variance
 of the input.
 
-In this post, we will see how Spatial Transformer Networks can allievate this problem, and how to implement the STN concept using keras from tensorflow 2. We will also cover many important details during implementation. 
+#### Can we do better by using STN
+In this post, we will see how Spatial Transformer Networks can allievate spatial variance problem, and how to implement the STN concept using keras from tensorflow 2. We will also cover many important details during implementation. 
 
-*The full code for this project is available on GitHub:*
-[https://github.com/xeonqq/spatial_transformer_network][1]
 
 ### Implementation
+*The full code for this project is available on GitHub:*
+[https://github.com/xeonqq/spatial_transformer_network][1]
 
 [1]: https://github.com/xeonqq/spatial_transformer_network
 [2]: https://www.cs.ryerson.ca/~aharley/vis/conv/
