@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Get the length of std::array without a instance."
-teaser: "A little bit of Meta Programming"
+title: "Get the length of std::array without instantiate an object."
+teaser: "A little bit of Template Meta Programming"
 header: no
 image:
     title: c++.png
