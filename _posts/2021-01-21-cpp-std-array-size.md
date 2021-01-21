@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "Get the length of std::array without a instance."
-subheadline: "C++"
 teaser: "A little bit of Meta Programming"
 header: no
 image:
@@ -27,7 +26,7 @@ To get the length of it is trivial:
 auto length = data.size(); 
 ```
 
-However, can you get the length of it just from the type. Imagine in your code base an array type is declared using an alias:
+However, can you get the length of it just from the type? Imagine in your code base an array type is declared using an alias:
 
 ```cpp
 //in samples.h
@@ -42,6 +41,7 @@ Samples dummy{};
 using FloatSamples = std::array<float, dummy.size()>;
 ```
 
+### Solution
 Here I show a nicer way using some C++ template magic.
 
 First we declare an template class which can take the std::array type as template argument: 
@@ -67,23 +67,28 @@ struct helper<std::array<T, N>>
 
 If we put the above helper code into *helper.h*, and put everything together, then we have:
 
-```
+```cpp
 #include "samples.h"
 #include "helper.h"
 int main()
 {
 	using FloatSamples = std::array<float, helper<Samples>::value>;
-
 	std::cout << helper<Samples>::value<< std::endl; // will print 3
-
 	return 0;
 }
 ```
 
+{% if true %}
+<div class="ads">
+{% include advertising_wide.html %}
+</div><!-- /.ads -->
+{% endif %}
+
+
 ### Summary
 
 In the end, we are able to just use std::array type to induce the size of it at compile time, without a need to instantiate an instance of it. Thanks to the magic of template metaprogramming.
-The trick here we are using has a formal terminology, and is called meta function.
+The trick here we are using has a formal terminology, and is called *meta function*.
 
 [1]: https://docs.google.com/presentation/d/e/2PACX-1vQwrivdqqBR8teLQ7prKtiDyMLSqgGBzTxfQ6BKXPVvpFpLRUQOmqTm57LEMIy3IIK14RTLcBcT-PCO/pub?start=false&loop=false&delayms=60000&slide=id.g1a727d4a2c_0_814
 [2]: https://i.stack.imgur.com/lV7Ty.jpg
