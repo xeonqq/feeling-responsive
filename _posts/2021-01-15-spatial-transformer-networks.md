@@ -108,8 +108,8 @@ For detail of using imgaug, refer to [my implementation][9]
 
 ### Implementation
 The Spatial Transformer Networks consists of the following key components:
- - **Localization net**: it can be a CNN or fully connectly NN, as long as the last layer of it is a regression layer, and it will generate 6 numbers representing the affine transformation $\theta$.
- - **Grid Generator**: it first generates a grid over the *target image* **V**, each point of the grid just corresponds to the pixel coordinate of each pixel in the target image. Secondly, it uses the transformation $\theta$ to transform the grid. 
+ - **Localization net**: it can be a CNN or fully connectly NN, as long as the last layer of it is a regression layer, and it will generate 6 numbers representing the affine transformation **&theta;**.
+ - **Grid Generator**: it first generates a grid over the *target image* **V**, each point of the grid just corresponds to the pixel coordinate of each pixel in the target image. Secondly, it uses the transformation **&theta;** to transform the grid. 
   <img src="{{ site.urlimg }}grid_generator.png" alt="normal" style="width:80%">
 
  -- **Sampler**: The transformed grid is like a mask over the *source image* **U**, which retrieve the pixels under the mask. However, the transformed grid no longer contains integer values, therefore a bilinear interpolation is performed on the *source image* **U**, in order to get an estimated pixel value under the transformed grid.
@@ -137,11 +137,11 @@ In order to make the last layer a regression layer, I didn't use ReLu as activat
 
 #### Grid Generator
 
-In the Grid Generator, one must note the transformation $\theta$ is applied on the grid generated from the target image **V** instead of the source image **U**, and it is called [*inverse mapping*][11] in the world of image processing. On the other hand if we transform the source image **U** to the target image **V**, this process is called [*forward mapping*][10].
+In the Grid Generator, one must note the transformation **&theta;** is applied on the grid generated from the target image **V** instead of the source image **U**, and it is called [*inverse mapping*][11] in the world of image processing. On the other hand if we transform the source image **U** to the target image **V**, this process is called [*forward mapping*][10].
 
 > The forward mapping iterates over each pixel of the input image, computes new coordinates for it, and copies its value to the new location. But the new coordinates may not lie within the bounds of the output image and may not be integers. The former problem is easily solved by checking the computed coordinates before copying pixel values. The second problem is solved by assigning the nearest integers to x′ and y′ and using these as the output coordinates of the transformed pixel. The problem is that each output pixel may be addressed several times or not at all (the latter case leads to "holes" where no value is assigned to a pixel in the output image).
 
-> The inverse mapping iterates over each pixel of the output image and uses the inverse transformation to determine the position in the input image from which a value must be sampled. In this case the determined positions also may not lie within the bounds of the input image and may not be integers. But the output image has no holes  </span><cite>[][12]</cite>
+> The inverse mapping iterates over each pixel of the output image and uses the inverse transformation to determine the position in the input image from which a value must be sampled. In this case the determined positions also may not lie within the bounds of the input image and may not be integers. But the output image has no holes  <cite>[Uni Auckland][12]</cite>
 
 After understanding the inverse mapping, let me show the implementation details:
 ```python
@@ -170,7 +170,6 @@ def transform_grids(transformations, grids, inputs):
     trans_matrices=tf.reshape(transformations, (-1, 2,3))
     batch_size = tf.shape(trans_matrices)[0]
     gs = tf.squeeze(grids, -1)
-
     reprojected_grids = tf.matmul(trans_matrices, gs, transpose_b=True)
     # transform grid range from [-1,1) to the range of [0,1)
     reprojected_grids = (tf.linalg.matrix_transpose(reprojected_grids) + 1)*0.5
@@ -186,22 +185,16 @@ In *transform_grids* we apply the transformations generated from the localizatio
 ```python
 def generate_four_neighbors_from_reprojection(inputs, reprojected_grids):
     _, H, W, _ = inputs.shape
-    
     x, y = tf.split(reprojected_grids, 2, axis=-1)
-
     x1 = tf.floor(x)
     x1 = tf.dtypes.cast(x1, tf.int32)
-
     x2 = x1 + tf.constant(1) 
-
     y1 = tf.floor(y)
     y1 = tf.dtypes.cast(y1, tf.int32)
     y2 = y1 + tf.constant(1) 
-    
     y_max = tf.constant(H - 1, dtype=tf.int32)
     x_max = tf.constant(W - 1, dtype=tf.int32)
     zero = tf.zeros([1], dtype=tf.int32)
-
     x1_safe = tf.clip_by_value(x1, zero, x_max)
     y1_safe = tf.clip_by_value(y1, zero, y_max)
     x2_safe = tf.clip_by_value(x2, zero, x_max)
@@ -214,7 +207,6 @@ def bilinear_sample(inputs, reprojected_grids):
     x1y2 = tf.concat([y2,x1],-1)
     x2y1 = tf.concat([y1,x2],-1)
     x2y2 = tf.concat([y2,x2],-1)
-
     pixel_x1y1 = tf.gather_nd(inputs, x1y1, batch_dims=1)
     pixel_x1y2 = tf.gather_nd(inputs, x1y2, batch_dims=1)
     pixel_x2y1 = tf.gather_nd(inputs, x2y1, batch_dims=1)
@@ -231,7 +223,6 @@ def bilinear_sample(inputs, reprojected_grids):
 
     r = wx@Q@wy
     _, H, W, channels = inputs.shape
-
     r = tf.reshape(r, (-1,H,W,1))
     return r
 ```
