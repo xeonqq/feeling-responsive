@@ -122,8 +122,8 @@ The Spatial Transformer Networks consists of the following key components:
 
  - **Localization net**: it can be a CNN or fully connectly NN, as long as the last layer of it is a regression layer, and it will generate 6 numbers representing the affine transformation **&theta;**.
  - **Grid Generator**: it first generates a grid over the *target image* **V**, each point of the grid just corresponds to the pixel coordinate of each pixel in the target image. Secondly, it uses the transformation **&theta;** to transform the grid. 
-  <img src="{{ site.urlimg }}grid_generator.png" alt="grid_generator" style="width:80%" class="center">
  - **Sampler**: The transformed grid is like a mask over the *source image* **U**, which retrieve the pixels under the mask. However, the transformed grid no longer contains integer values, therefore a bilinear interpolation is performed on the *source image* **U**, in order to get an estimated pixel value under the transformed grid.
+  <img src="{{ site.urlimg }}grid_generator.png" alt="grid_generator" style="width:80%" class="center">
 
 #### Localization Net
 The localization net takes the input images of dimension [batch_size, height, width, channels] and produces transformation for each input image of dimension. The transformations will be of dimension [batch_size, 6]. Here we use a CNN architecture which is very similar to our classification network, execpt some special setup on the last layer. 
