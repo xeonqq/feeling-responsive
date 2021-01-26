@@ -100,7 +100,7 @@ After applying the distortion, we place original MNIST (left), distorted MNIST (
   <img src="{{ site.urlimg }}MNIST.png" alt="normal" style="width:100%">
   </div>
   <div class="img-container">
-  <img src="{{ site.urlimg }}MNIST_distorted" alt="distorted" style="width:100%">
+  <img src="{{ site.urlimg }}MNIST_distorted.png" alt="distorted" style="width:100%">
   </div>
 </div>
 For detail of using imgaug, refer to [my implementation][9] 
@@ -276,7 +276,7 @@ Let's have a look of the STN transformed input for the CNN: (input images (left)
   <img src="{{ site.urlimg }}mnist_test_distorted.png" alt="test_distorted" style="width:100%">
   </div>
   <div class="img-container">
-  <img src="{{ site.urlimg }}stn_correct" alt="corrected" style="width:100%">
+  <img src="{{ site.urlimg }}stn_correct.png" alt="corrected" style="width:100%">
   </div>
 </div>
 
