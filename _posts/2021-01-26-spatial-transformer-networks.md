@@ -25,7 +25,11 @@ categories:
   padding: 5px;
   border: 1px solid black
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .clearfix::after {
   content: "";
   clear: both;
@@ -114,11 +118,11 @@ For detail of using imgaug, refer to [my implementation][9]
 
 ### Implementation
 The Spatial Transformer Networks consists of the following key components:
-  <img src="{{ site.urlimg }}stn.png" alt="stn" style="width:100%">
+  <img src="{{ site.urlimg }}stn.png" alt="stn" style="width:100%" class="center">
 
  - **Localization net**: it can be a CNN or fully connectly NN, as long as the last layer of it is a regression layer, and it will generate 6 numbers representing the affine transformation **&theta;**.
  - **Grid Generator**: it first generates a grid over the *target image* **V**, each point of the grid just corresponds to the pixel coordinate of each pixel in the target image. Secondly, it uses the transformation **&theta;** to transform the grid. 
-  <img src="{{ site.urlimg }}grid_generator.png" alt="grid_generator" style="width:80%">
+  <img src="{{ site.urlimg }}grid_generator.png" alt="grid_generator" style="width:80%" class="center">
  - **Sampler**: The transformed grid is like a mask over the *source image* **U**, which retrieve the pixels under the mask. However, the transformed grid no longer contains integer values, therefore a bilinear interpolation is performed on the *source image* **U**, in order to get an estimated pixel value under the transformed grid.
 
 #### Localization Net
@@ -234,7 +238,9 @@ def bilinear_sample(inputs, reprojected_grids):
     return r
 ```
 
-<img src="{{ site.urlimg }}BilinearInterpolation.png" alt="bilinear" style="width:70%">
+<img src="{{ site.urlimg }}BilinearInterpolation.png" alt="bilinear" style="width:70%" class="center">
+
+
 *bilinear_sample* first use *generate_four_neighbors_from_reprojection* to get the 4 nearest neighbors for each reprojected grid point. The *Q* matrix is constructed using the four points. Then by using the [linear interpolation][13] formular from Wikipedia, the pixel value at the projection point is estimated.
 
 *Implementation detail:* Since python >= 3.5 the @ operator is supported (see PEP 465). In TensorFlow, it simply calls the tf.matmul()
