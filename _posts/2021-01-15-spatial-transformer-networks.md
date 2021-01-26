@@ -105,6 +105,12 @@ After applying the distortion, we place original MNIST (left), distorted MNIST (
 </div>
 For detail of using imgaug, refer to [my implementation][9] 
 
+{% if true %}
+<div class="ads">
+{% include advertising_wide.html %}
+</div><!-- /.ads -->
+{% endif %}
+
 ### Implementation
 The Spatial Transformer Networks consists of the following key components:
   <img src="{{ site.urlimg }}stn.png" alt="stn" style="width:100%">
@@ -252,6 +258,13 @@ st.compile(optimizer="adam",
               metrics=['accuracy'])
 ```
 *Implementation detail*: tf.keras.Model takes two parameters, first input, second output (in this case x). This is the trick how we combine STN with exsiting CNN together.
+
+{% if true %}
+<div class="ads">
+{% include advertising_wide.html %}
+</div><!-- /.ads -->
+{% endif %}
+
 
 ### Evaluation
 
