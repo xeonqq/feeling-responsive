@@ -23,6 +23,7 @@ categories:
   float: left;
   width: 50%;
   padding: 5px;
+  border: 1px solid black
 }
 
 .clearfix::after {
@@ -233,7 +234,7 @@ def bilinear_sample(inputs, reprojected_grids):
     return r
 ```
 
-<img src="{{ site.urlimg }}BilinearInterpolation.png" alt="bilinar" style="width:100%">
+<img src="{{ site.urlimg }}BilinearInterpolation.png" alt="bilinear" style="width:70%">
 *bilinear_sample* first use *generate_four_neighbors_from_reprojection* to get the 4 nearest neighbors for each reprojected grid point. The *Q* matrix is constructed using the four points. Then by using the [linear interpolation][13] formular from Wikipedia, the pixel value at the projection point is estimated.
 
 *Implementation detail:* Since python >= 3.5 the @ operator is supported (see PEP 465). In TensorFlow, it simply calls the tf.matmul()
