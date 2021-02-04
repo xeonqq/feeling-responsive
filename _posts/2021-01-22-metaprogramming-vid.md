@@ -8,8 +8,8 @@ tags:
     - post format
 categories:
     - design
-iframe: "<iframe width='970' height='546' src='//www.youtube.com/watch?v=WoHxoz_0ykI' frameborder='0' allowfullscreen></iframe>"
+iframe: "<iframe width='970' height='546' src='//www.youtube.com/watch?v=KW8cFZ_lHYs' frameborder='0' allowfullscreen></iframe>"
 video:
-    embedURL: "https://www.youtube.com/watch?v=WoHxoz_0ykI"
-    contentURL: "https://www.youtube.com/watch?v=WoHxoz_0ykI"
+    embedURL: "https://www.youtube.com/watch?v=KW8cFZ_lHYs"
+    contentURL: "https://www.youtube.com/watch?v=KW8cFZ_lHYs"
 ---
