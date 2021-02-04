@@ -88,7 +88,9 @@ int main()
 ### Summary
 
 In the end, we are able to just use std::array type to induce the size of it at compile time, without a need to instantiate an instance of it. Thanks to the magic of template metaprogramming.
-The trick here we are using has a formal terminology, and is called *meta function*.
+The trick here we are using has a formal terminology, and is called *meta function*. 
+
+For more on meta function, I have a 10 min [video]({{ site.url }}design/metaprogramming-vid) explaining it in detail!
 
 [1]: https://docs.google.com/presentation/d/e/2PACX-1vQwrivdqqBR8teLQ7prKtiDyMLSqgGBzTxfQ6BKXPVvpFpLRUQOmqTm57LEMIy3IIK14RTLcBcT-PCO/pub?start=false&loop=false&delayms=60000&slide=id.g1a727d4a2c_0_814
 [2]: https://i.stack.imgur.com/lV7Ty.jpg
